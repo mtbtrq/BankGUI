@@ -1,4 +1,3 @@
-package subclasses;
 import javax.swing.JOptionPane;
 
 public class User {
@@ -9,7 +8,7 @@ public class User {
 	Double randomNumber = Math.floor(Math.random()*(99999999+1)+0);
     int customerId = randomNumber.intValue();
 
-    User (String customersName) {
+    public User (String customersName) {
         customerName = customersName;
     }
 
@@ -27,12 +26,13 @@ public class User {
     }
 
     void withdraw() {
-		String stringAmount = JOptionPane.showInputDialog(null, "Enter an amount to deposit:");
+		String stringAmount = JOptionPane.showInputDialog(null, "Enter an amount to withdraw:");
 		float amount = Float.parseFloat(stringAmount);
 
         if (amount != 0) {
 			previousAction = 'w';
 			previousActionAmount = amount;
+			balance -= amount;
 
 			JOptionPane.showMessageDialog(null, "Withdrew $" + amount + " from your bank account!");
         }
@@ -77,7 +77,6 @@ public class User {
 			}
 		} while (option != 'E');
 
-		JOptionPane.showMessageDialog(null, "Thank you!");
-		System.out.println("Thank you!");
+		JOptionPane.showMessageDialog(null, "Thank you for banking with us!");
 	}
 }
