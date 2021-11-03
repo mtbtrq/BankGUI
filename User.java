@@ -2,9 +2,9 @@ import javax.swing.JOptionPane;
 
 public class User {
     float balance;
-    float previousActionAmount;
 	char previousAction;
-    String customerName;
+	String customerName;
+    float previousActionAmount;
 	Double randomNumber = Math.floor(Math.random()*(99999999+1)+0);
     int customerId = randomNumber.intValue();
 
@@ -54,7 +54,6 @@ public class User {
 		do {
 			char option1 = JOptionPane.showInputDialog(null, "Welcome, " + customerName + "(" + customerId + ")" + "!" + "\n\n" + "What would you like to do?" + "\n" + "A. Check your balance" + "\n" + "B. Make a deposit" + "\n" + "C. Make a withdrawal" + "\n" + "D. View previous transaction" + "\n" + "E. Exit" + "\n\n" + "Enter an option:").charAt(0);
 			option = Character.toUpperCase(option1);
-			System.out.println();
 			
 			switch(option) {
 			case 'A':
