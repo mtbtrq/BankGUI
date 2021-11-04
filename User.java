@@ -6,6 +6,7 @@ public class User {
     float balance;
 	char previousAction;
 	String customerName;
+	String title = "Bank";
     float previousActionAmount;
 	Double randomNumber = Math.floor(Math.random()*(99999999+1)+0);
     int customerId = randomNumber.intValue();
@@ -15,10 +16,10 @@ public class User {
         customerName = customersName;
     }
 
-	// Deposite method
+	// Deposit method
     void deposit() {
 		// Asking user for input then converting that input from string to float
-		String stringAmount = JOptionPane.showInputDialog(null, "Enter an amount to deposit:");
+		String stringAmount = JOptionPane.showInputDialog(null, "Enter an amount to deposit:", title, JOptionPane.INFORMATION_MESSAGE);
 		float amount = Float.parseFloat(stringAmount);
 		
 		// If the user's inputted amount is not zero, perform the following
@@ -30,14 +31,14 @@ public class User {
 			previousActionAmount = amount;
 
 			// Show the user a success message
-			JOptionPane.showMessageDialog(null, "Deposited $" + amount + " to your bank account!");
+			JOptionPane.showMessageDialog(null, "Deposited $" + amount + " to your bank account!", title, JOptionPane.INFORMATION_MESSAGE);
 		}
     }
 
 	// Withdraw method
     void withdraw() {
 		// Asking user for input then converting that input from string to float
-		String stringAmount = JOptionPane.showInputDialog(null, "Enter an amount to withdraw:");
+		String stringAmount = JOptionPane.showInputDialog(null, "Enter an amount to withdraw:", title, JOptionPane.INFORMATION_MESSAGE);
 		float amount = Float.parseFloat(stringAmount);
 
 		// If the user's inputted amount is not zero, perform the following
@@ -49,7 +50,7 @@ public class User {
 			previousActionAmount = amount;
 
 			// Show the user a success message
-			JOptionPane.showMessageDialog(null, "Withdrew $" + amount + " from your bank account!");
+			JOptionPane.showMessageDialog(null, "Withdrew $" + amount + " from your bank account!", title, JOptionPane.INFORMATION_MESSAGE);
         }
     }
 
@@ -58,15 +59,15 @@ public class User {
 		switch(previousAction) {
 			case 'd':
 				// If the previousAction is deposit, show the user the amount and the action
-				JOptionPane.showMessageDialog(null, "Deposited $" + previousActionAmount);
+				JOptionPane.showMessageDialog(null, "Deposited $" + previousActionAmount, title, JOptionPane.INFORMATION_MESSAGE);
 				break;
 			case 'w':
 			// If the previousAction is withdraw, show the user the amount and the action
-				JOptionPane.showMessageDialog(null, "Withdrew $" + previousActionAmount);
+				JOptionPane.showMessageDialog(null, "Withdrew $" + previousActionAmount, title, JOptionPane.INFORMATION_MESSAGE);
 				break;
 			default:
 				// If there is no previous activity, show the user an error message
-				JOptionPane.showMessageDialog(null, "No previous transaction occured.");
+				JOptionPane.showMessageDialog(null, "No previous transaction occured.", title, JOptionPane.INFORMATION_MESSAGE);
 				break;
 		}
     }
@@ -77,7 +78,7 @@ public class User {
 
 		do {
 			// A very long showInputDialog call
-			char option1 = JOptionPane.showInputDialog(null, "Welcome, " + customerName + "(" + customerId + ")" + "!" + "\n\n" + "What would you like to do?" + "\n" + "A. Check your balance" + "\n" + "B. Make a deposit" + "\n" + "C. Make a withdrawal" + "\n" + "D. View previous transaction" + "\n" + "E. Exit" + "\n\n" + "Enter an option:").charAt(0);
+			char option1 = JOptionPane.showInputDialog(null, "Welcome, " + customerName + "(" + customerId + ")" + "!" + "\n\n" + "What would you like to do?" + "\n" + "A. Check your balance" + "\n" + "B. Make a deposit" + "\n" + "C. Make a withdrawal" + "\n" + "D. View previous transaction" + "\n" + "E. Exit" + "\n\n" + "Enter an option:", title, JOptionPane.INFORMATION_MESSAGE).charAt(0);
 			
 			// Making the user's selection uppercase to allow the user to type an option of any capitalization
 			option = Character.toUpperCase(option1);
@@ -85,7 +86,7 @@ public class User {
 			switch(option) {
 			case 'A':
 				// If the user wants to see their balance, do this
-				JOptionPane.showMessageDialog(null, "Balance = $" + balance);
+				JOptionPane.showMessageDialog(null, "Balance = $" + balance, title, JOptionPane.INFORMATION_MESSAGE);
 				break;
 			case 'B':
 				// If the users want to deposit a certain amount, call the deposit function
@@ -103,12 +104,12 @@ public class User {
 				break;
 			default:
 				// If the user is stupid and enters an invalid option, display an error
-				JOptionPane.showMessageDialog(null, "Error: invalid option. Please enter only enter A, B, C, D, or E!");
+				JOptionPane.showMessageDialog(null, "Error: invalid option. Please enter only enter A, B, C, D, or E!", title, JOptionPane.ERROR_MESSAGE);
 				break;
 			}
 		} while (option != 'E');
 
 		// When the user exits the application, display a message
-		JOptionPane.showMessageDialog(null, "Thank you for banking with us!");
+		JOptionPane.showMessageDialog(null, "Thank you for banking with us!", title, JOptionPane.INFORMATION_MESSAGE);
 	}
 }

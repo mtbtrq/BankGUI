@@ -1,5 +1,5 @@
 public class Main {
     public static void main(String[] args) {
-        new Authenticate("John Smith", "Password123");
+        new Authenticate("John Smith", "password");
     }
 }
